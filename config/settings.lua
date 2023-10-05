@@ -1,7 +1,7 @@
 local settings = {}
 
 settings.REPOSITORY = "https://raw.githubusercontent.com/minekrampf/casinov3/main/"
-settings.TITLE = "Приветствуем ваc у нас в казино"
+settings.TITLE = "Приветствуем ваc в казино на /warp 777"
 settings.ADMINS = { "SixNineAct", "Samaya" }
 
 -- CHEST - Взаимодействие сундука и МЕ сети
