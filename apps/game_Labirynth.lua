@@ -292,6 +292,8 @@ while true do
             player = p
             drawField(true)
             setGame(true)
+        else
+            Log(reason)
         end
     end
     if (left > 80) and (left < 115) and (top > 27) and (top < 32) then
