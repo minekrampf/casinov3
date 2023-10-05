@@ -7,6 +7,7 @@ local function addCurrency(name, id, dmg, model, color, max)
         dmg = dmg,
         model = model,
         color = color,
+        max = max
     })
 end
 
