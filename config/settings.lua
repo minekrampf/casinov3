@@ -1,6 +1,6 @@
 local settings = {}
 
-settings.REPOSITORY = "https://raw.githubusercontent.com/krovyaka/OpenComputers-Casino/master"
+settings.REPOSITORY = "https://raw.githubusercontent.com/minekrampf/casinov3/main/"
 settings.TITLE = "Приветствуем ваc у нас в казино"
 settings.ADMINS = { "SixNineAct", "Samaya" }
 
