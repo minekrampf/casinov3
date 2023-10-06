@@ -85,8 +85,8 @@ else
             money = money - (money < 64 and money or 64)
         end
         local logName = pim.getInventoryName()
-        local logtxt = "["..CURRENT_APP.."] "..logName.." выйграл "..logMoney
-        weebhook("'''"..logtxt.."'''")
+        local logtxt = "```["..CURRENT_APP.."] "..logName.." выйграл "..logMoney.."```"
+        weebhook(logtxt)
     end
 end
 
@@ -113,8 +113,8 @@ casino.takeMoney = function(money)
     end
     currentBetSize = currentBetSize + money
     local logName = pim.getInventoryName()
-    local logtxt = "["..CURRENT_APP.."] "..logName.." поставил "..money.." | ∑ = "..currentBetSize
-    weebhook("'''"..logtxt.."'''")
+    local logtxt = "```["..CURRENT_APP.."] "..logName.." поставил "..money.." | ∑ = "..currentBetSize.."```"
+    weebhook(logtxt)
     return true
 end
 
