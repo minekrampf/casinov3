@@ -171,7 +171,7 @@ end
 function weebhook(id, txt)
     local time_correction = 3
     io.open('/tmp/clock.dt','w'):write(''):close()
-    local getTime = os.date("%H:%M:%S  %d.%m.%y", tonumber(string.sub(fs.lastModified('/tmp/clock.dt'), 1, -4)) + time_correction * 3600)
+    local getTime = os.date("%H:%M:%S  %d.%m.%y", tonumber(string.sub(filesystem.lastModified('/tmp/clock.dt'), 1, -4)) + time_correction * 3600)
     pcall(internet.request, url, {content=id..getTime.." "..txt}, {["User-Agent"] = "OpenComputers 1.7.5"})
 end
 
