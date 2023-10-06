@@ -100,7 +100,7 @@ end
 
 local function moneyOfCombination(combination)
     if (value == 5 and combination == 1) then
-        return 1000
+        return 2500
     elseif (combination == 1) then
         return 250 * value
     elseif (combination == 2) then
@@ -128,7 +128,7 @@ local function drawRewards(k, comb)
     gpu.setForeground(0x0000ff)
     gpu.setBackground(0x3d3d3d)
     if (k == 5) then
-        gpu.set(24, 6, getDivideBy4(1000))
+        gpu.set(24, 6, getDivideBy4(2500))
     else
         gpu.set(24, 6, getDivideBy4(250 * k))
     end
@@ -144,7 +144,7 @@ local function drawRewards(k, comb)
     if (comb > 0) then
         gpu.setBackground(0x00ff00)
         if (k == 5 and comb == 1) then
-            gpu.set(24, 6, getDivideBy4(1000))
+            gpu.set(24, 6, getDivideBy4(2500))
         else
             gpu.set(24, comb + 5, getDivideBy4(moneyOfCombination(comb)))
         end

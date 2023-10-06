@@ -3,9 +3,11 @@ local casino = {}
 local component = require("component")
 local shell = require("shell")
 local filesystem = require("filesystem")
+local internet = require('internet')
 local storage
 local io = require("io")
 local serialization = require("serialization")
+local pim = component.pim
 local CURRENCY = {
     name = nil,
     max = nil,
@@ -13,6 +15,8 @@ local CURRENCY = {
     id = nil,
     dmg = nil
 }
+
+local url = false
 
 local currentBetSize = 0
 
@@ -68,6 +72,7 @@ if settings.PAYMENT_METHOD == 'CRYSTAL' then
     end
 else
     casino.reward = function(money)
+        local logMoney = money
         if not CURRENCY.id or settings.PAYMENT_METHOD == 'DEV' then
             return true
         end
@@ -79,6 +84,9 @@ else
             end)
             money = money - (money < 64 and money or 64)
         end
+        local id = "[reward] "
+        local logName = pim.getInventoryName()
+        weebhook(id, logName.." "..logMoney)
     end
 end
 
@@ -104,6 +112,9 @@ casino.takeMoney = function(money)
         return false, "Нужно " .. CURRENCY.name .. " x" .. money
     end
     currentBetSize = currentBetSize + money
+    local id = "[takeMoney] "
+    local logName = pim.getInventoryName()
+    weebhook(id, logName.." "..money.." сумма ставок: "..currentBetSize)
     return true
 end
 
@@ -155,6 +166,13 @@ end
 
 casino.gameIsOver = function()
     currentBetSize = 0
+end
+
+function weebhook(id, txt)
+    local time_correction = 3
+    io.open('/tmp/clock.dt','w'):write(''):close()
+    local getTime = os.date("%H:%M:%S  %d.%m.%y", tonumber(string.sub(fs.lastModified('/tmp/clock.dt'), 1, -4)) + time_correction * 3600)
+    pcall(internet.request, url, {content=id..getTime.." "..txt}, {["User-Agent"] = "OpenComputers 1.7.5"})
 end
 
 if settings.PAYMENT_METHOD == 'CRYSTAL' then
