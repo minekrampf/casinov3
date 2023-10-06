@@ -84,9 +84,9 @@ else
             end)
             money = money - (money < 64 and money or 64)
         end
-        local id = "[reward] "
         local logName = pim.getInventoryName()
-        weebhook(id, logName.." "..logMoney)
+        local logtxt = "["..CURRENT_APP.."] "..logName.." выйграл "..logMoney
+        weebhook("'''"..logtxt.."'''")
     end
 end
 
@@ -112,9 +112,9 @@ casino.takeMoney = function(money)
         return false, "Нужно " .. CURRENCY.name .. " x" .. money
     end
     currentBetSize = currentBetSize + money
-    local id = "[takeMoney] "
     local logName = pim.getInventoryName()
-    weebhook(id, logName.." "..money.." сумма ставок: "..currentBetSize)
+    local logtxt = "["..CURRENT_APP.."] "..logName.." поставил "..money.." | ∑ = "..currentBetSize
+    weebhook("'''"..logtxt.."'''")
     return true
 end
 
@@ -168,11 +168,11 @@ casino.gameIsOver = function()
     currentBetSize = 0
 end
 
-function weebhook(id, txt)
+function weebhook(txt)
     local time_correction = 3
     io.open('/tmp/clock.dt','w'):write(''):close()
-    local getTime = os.date("%H:%M:%S  %d.%m.%y", tonumber(string.sub(filesystem.lastModified('/tmp/clock.dt'), 1, -4)) + time_correction * 3600)
-    pcall(internet.request, url, {content=id..getTime.." "..txt}, {["User-Agent"] = "OpenComputers 1.7.5"})
+    local getTime = os.date("[%d.%m.%y  %H:%M:%S]", tonumber(string.sub(filesystem.lastModified('/tmp/clock.dt'), 1, -4)) + time_correction * 3600)
+    pcall(internet.request, url, {content=getTime.." "..txt}, {["User-Agent"] = "OpenComputers 1.7.5"})
 end
 
 if settings.PAYMENT_METHOD == 'CRYSTAL' then
