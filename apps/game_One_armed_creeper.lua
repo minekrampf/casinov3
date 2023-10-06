@@ -45,7 +45,7 @@ local function initStaticData()
         { "golden_apple", 70, "Золотое яблоко" },
         { "diamond", 80, "Алмаз" },
         { "uu_matter", 90, "Материя" },
-        { "creeper", 100, "Голова крипера" }
+        { "creeper", 150, "Голова крипера" }
     }
     local imagesFolder = "/home/images/one_armed_creeper/"
     shell.execute("md " .. imagesFolder)
