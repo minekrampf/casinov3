@@ -169,10 +169,7 @@ casino.gameIsOver = function()
 end
 
 function weebhook(txt)
-    local time_correction = 3
-    io.open('/tmp/clock.dt','w'):write(''):close()
-    local getTime = os.date("[%d.%m.%y  %H:%M:%S]", tonumber(string.sub(filesystem.lastModified('/tmp/clock.dt'), 1, -4)) + time_correction * 3600)
-    pcall(internet.request, url, {content=getTime.." "..txt}, {["User-Agent"] = "OpenComputers 1.7.5"})
+    pcall(internet.request, url, {content=txt}, {["User-Agent"] = "OpenComputers 1.8.3"})
 end
 
 if settings.PAYMENT_METHOD == 'CRYSTAL' then
