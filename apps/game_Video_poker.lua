@@ -108,15 +108,15 @@ local function moneyOfCombination(combination)
     elseif (combination == 3) then
         return 25 * value
     elseif (combination == 4) then
-        return 15 * value
-    elseif (combination == 5) then
         return 10 * value
-    elseif (combination == 6) then
+    elseif (combination == 5) then
         return 8 * value
-    elseif (combination == 7) then
+    elseif (combination == 6) then
         return 6 * value
-    elseif (combination == 8) then
+    elseif (combination == 7) then
         return 4 * value
+    elseif (combination == 8) then
+        return 2 * value
     elseif (combination == 9) then
         return 1 * value
     else
@@ -134,11 +134,11 @@ local function drawRewards(k, comb)
     end
     gpu.set(24, 7, getDivideBy4(50 * k))
     gpu.set(24, 8, getDivideBy4(25 * k))
-    gpu.set(24, 9, getDivideBy4(15 * k))
-    gpu.set(24, 10, getDivideBy4(10 * k))
-    gpu.set(24, 11, getDivideBy4(8 * k))
-    gpu.set(24, 12, getDivideBy4(6 * k))
-    gpu.set(24, 13, getDivideBy4(4 * k))
+    gpu.set(24, 9, getDivideBy4(10 * k))
+    gpu.set(24, 10, getDivideBy4(8 * k))
+    gpu.set(24, 11, getDivideBy4(6 * k))
+    gpu.set(24, 12, getDivideBy4(4 * k))
+    gpu.set(24, 13, getDivideBy4(2 * k))
     gpu.set(24, 14, getDivideBy4(1 * k))
 
     if (comb > 0) then
